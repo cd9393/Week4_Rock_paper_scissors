@@ -1,15 +1,10 @@
 require('sinatra')
 require('sinatra/contrib/all')
 require('pry-byebug')
+require_relative("./models/game")
 
-get "/rock/scissors" do
-  return " Rock wins"
-end
-
-get "/rock/paper" do
-  return "paper wins"
-end
-
-get "/paper/scissors" do
-  return "Scissors win"
+get "/game/:hand1/:hand2" do
+  game = Game.new(params[:hand1],params[:hand2])
+  @result = game.play()
+  erb(:result)
 end
