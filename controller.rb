@@ -8,3 +8,7 @@ get "/game/:hand1/:hand2" do
   @result = game.play()
   erb(:result)
 end
+
+get "/" do
+  erb(:welcome)
+end
